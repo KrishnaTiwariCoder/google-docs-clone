@@ -16,15 +16,16 @@ io.on("connection", (socket) => {
   socket.on("get-document", async (id) => {
     const document = await getDocuent(id);
     socket.join(id);
-
+    
     socket.emit("load-document", document.data);
-
+    
     socket.on("/", (data) => {
       socket.broadcast.to(id).emit("receive-data", data);
     });
-
+    
     socket.on("save-document", async (data) => {
       await updateDocument(id, data);
+      socket.broadcast.to(id).emit("receive-data", data);
     });
   });
 });

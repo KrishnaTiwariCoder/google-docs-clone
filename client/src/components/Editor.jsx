@@ -36,8 +36,10 @@ const Editor = () => {
   useEffect(() => {
     if (!socketServerState || !quillServerState) return;
 
+
     const handleChange = (delta) => {
-      quillServerState.updateContents(delta);
+      console.log(delta);
+      quillServerState.setContents(delta);
     };
 
     socketServerState.on("receive-data", handleChange);
@@ -56,6 +58,7 @@ const Editor = () => {
       socketServerState.emit("send-change", delta);
       // console.log(quillServerState.getContents());
       socketServerState.emit("save-document", quillServerState.getContents());
+      console.log(quillServerState.getContents());  
     };
 
     quillServerState.on("text-change", handleChange);

@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const connection =
-  "mongodb+srv://Krishna:eFnCOqC8oRqsrUuR@cluster0.jek4t.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+  "mongodb+srv://Krishna:XVGYETFmKSoOd5ic@cluster0.rlvy4at.mongodb.net/?retryWrites=true&w=majority";
 
 const Connect = () => {
   mongoose
